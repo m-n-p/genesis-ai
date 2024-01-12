@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.noscrollbarstyle::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 10px;
+}
+
+.noscrollbarstyle::-webkit-scrollbar-thumb {
+  background: rgb(77, 67, 67);
+  border-radius: 10px;
+}
