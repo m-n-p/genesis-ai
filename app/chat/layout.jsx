@@ -16,7 +16,7 @@ const ChatLayout = () => {
 
   return (
     <div className="w-screen h-screen max-h-screen overflow-hidden flex main-container">
-      <div className="w-[20%] h-full overflow-hidden max-h-full bg-[#222121]">
+      <div className="w-[20%] h-screen overflow-hidden  bg-[#222121]">
         <LeftPanel />
       </div>
       <div className="max-w-[80%] grow h-full overflow-y-hidden max-h-full ">

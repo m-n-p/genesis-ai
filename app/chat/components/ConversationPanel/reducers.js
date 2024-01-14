@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import createNewQuestion from "../ChatPanel/actions/conversation";
 import getGetCurrentThread from "../ChatPanel/actions/getCurrentThread";
+import { updateNewThread } from "../ChatPanel/reducers";
 
 const initialState = {
   chats: [],
@@ -26,8 +27,13 @@ const conversationPanelSlice = createSlice({
         answer: action.payload.answers,
       };
       console.log(result, "result");
-      state.chats = { ...state.threads, result };
+      state.chats = { ...state.chats, result };
       state.conversationId = action.payload.conversationId;
+      // updateNewThread({
+      //   conversationId: action.payload.conversationId,
+      //   mind: action.payload.role,
+      //   title: action.payload.query,
+      // });
     });
 
     builder.addCase(getGetCurrentThread.fulfilled, (state, action) => {

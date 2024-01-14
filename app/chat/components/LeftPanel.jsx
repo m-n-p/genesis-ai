@@ -16,8 +16,8 @@ const LeftPanel = () => {
   }, [dispatch, uuid]);
 
   return (
-    <div className="w-full h-full bg-[#222121] text-white  flex flex-col">
-      <div className="grow px-2 py-3 flex flex-col">
+    <div className="w-full h-full bg-[#222121] text-white  flex flex-col overflow-hidden max-h-full">
+      <div className="grow px-2 py-3 flex flex-col max-h-full overflow-hidden">
         <div>
           <AddButton />
         </div>
@@ -25,7 +25,7 @@ const LeftPanel = () => {
           <QuestionsList />
         </div>
       </div>
-      <button className="flex items-center bg-[#D9D9D9]">
+      <button className="flex h-max items-center bg-[#D9D9D9]">
         <Image
           src="/MontaLogo.png"
           alt="Avatar"

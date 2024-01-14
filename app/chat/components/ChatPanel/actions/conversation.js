@@ -82,10 +82,7 @@ const createNewQuestion = createAsyncThunk(
 
     return {
       query: payload.query,
-      answers:
-        mind === "Investor"
-          ? questionResponse.data.result
-          : questionResponse.data,
+      answers: questionResponse.data.result,
       conversationId: finalConversationId,
       role: payload?.mind,
     };

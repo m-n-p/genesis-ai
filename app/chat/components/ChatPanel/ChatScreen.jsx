@@ -19,7 +19,7 @@ const ChatScreen = ({ activeThread }) => {
           activeThread={activeThread}
         />
       </div>
-      <InputField />
+      <InputField activeThread={activeThread} />
     </div>
   );
 };

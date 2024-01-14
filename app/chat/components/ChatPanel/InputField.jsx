@@ -1,22 +1,26 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import createNewQuestion from "./actions/conversation";
+import Loader from "../Loader";
 
-const InputField = () => {
+const InputField = ({ activeThread }) => {
   const inputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
   async function askQuestion(e) {
     try {
-      console.log(inputRef.current.value);
+      setLoading(true);
       dispatch(
         createNewQuestion({
           query: inputRef.current.value,
-          mind: "Investor",
-          api: "query_k1",
+          mind: activeThread?.mind,
+          api: activeThread?.mind === "Investor" ? "query_k1" : "query_k2",
         })
       );
+      inputRef.current.value = "";
+      setLoading(false);
     } catch (error) {
       console.log(error, "error");
     }
@@ -30,15 +34,20 @@ const InputField = () => {
       </p>
       <div className="w-full relative ">
         <input
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              askQuestion();
+            }
+          }}
           ref={inputRef}
           placeholder="Ask me anything"
           className="w-full rounded-full bg-[#4A4A4A] pl-4 py-4 pr-12"
         />
         <button
           onClick={askQuestion}
-          className="bg-[#1B68DC] rounded-full px-4 py-2 absolute right-3 top-1/2 -translate-y-1/2"
+          className="bg-[#1B68DC] rounded-full px-4 py-2 absolute right-3 top-1/2 -translate-y-1/2 w-28"
         >
-          Ask Me!
+          {loading ? <Loader /> : " Ask Me!"}
         </button>
       </div>
       <p>
