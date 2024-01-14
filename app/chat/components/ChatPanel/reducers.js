@@ -22,7 +22,7 @@ const chatPanelSlice = createSlice({
         mind: "",
         conversationId: "newThread",
         title: "New Question",
-        threads: {},
+        thread: {},
         newThread: true,
       };
       state.threads.conversations = {
@@ -52,13 +52,25 @@ const chatPanelSlice = createSlice({
     });
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
       let newThreads = { ...state.threads };
-      newThreads.conversations[state.activeThread].conversationId =
-        newThreads.conversations[state.activeThread].conversationId =
-          action.payload.conversationId;
-      newThreads.conversations[state.activeThread].title = action.payload.query;
-      newThreads.conversations[state.activeThread].newThread = false;
-      newThreads.conversations[state.activeThread].mind = action.payload.role;
+      let result = {
+        query: action.payload.query,
+        answer: action.payload.answers,
+      };
+      let object = {
+        conversationId: action.payload.conversationId,
+        title: action.payload.query,
+        newThread: false,
+        mind: action.payload.role,
+        thread: {
+          ...newThreads.conversations[state.activeThread].thread,
+          result,
+        },
+      };
+      delete newThreads.conversations.newThread;
+      newThreads.conversations[action.payload.conversationId] = { ...object };
+      console.log(newThreads, "after all updates");
       state.threads = newThreads;
+      state.activeThread = action.payload.conversationId;
     });
   },
 });
