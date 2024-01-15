@@ -4,7 +4,7 @@ import getGetCurrentThread from "../ChatPanel/actions/getCurrentThread";
 import { updateNewThread } from "../ChatPanel/reducers";
 
 const initialState = {
-  chats: [],
+  chats: {},
   mind: "",
   conversationId: "",
 };
@@ -17,17 +17,27 @@ const conversationPanelSlice = createSlice({
     selectRole: (state, action) => {
       state.mind = action.payload;
     },
+
+    addQuestionToList: (state, action) => {
+      let result = {
+        query: action.payload.query,
+        answer: "",
+        loading: true,
+      };
+      state.chats = { ...state.chats, result };
+    },
   },
 
   extraReducers(builder) {
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
+      let keys = Object.keys(state.chats);
+      let lastKey = keys[keys.length - 1];
+      let lastObject = state.chats[lastKey];
+
+      lastObject.answer = action.payload.answers;
+      lastObject.loading = false;
       console.log(action.payload);
-      let result = {
-        query: action.payload.query,
-        answer: action.payload.answers,
-      };
-      console.log(result, "result");
-      state.chats = { ...state.chats, result };
+      state.chats[lastKey] = lastObject;
       state.conversationId = action.payload.conversationId;
       // updateNewThread({
       //   conversationId: action.payload.conversationId,
@@ -46,6 +56,6 @@ const conversationPanelSlice = createSlice({
   },
 });
 
-export const { selectRole } = conversationPanelSlice.actions;
+export const { selectRol, addQuestionToList } = conversationPanelSlice.actions;
 
 export default conversationPanelSlice.reducer;

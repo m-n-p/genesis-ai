@@ -23,7 +23,7 @@ const createNewQuestion = createAsyncThunk(
           user_id: uuid,
         }
       );
-
+      ``;
       if (isError(createConversationResponse)) {
         return thunkAPI.rejectWithValue({
           message: createConversationResponse.error,

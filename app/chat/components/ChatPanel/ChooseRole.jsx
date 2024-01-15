@@ -2,6 +2,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { selectRole } from "../ConversationPanel/reducers";
+import { useAppSelector } from "../../../store";
+import { createNewThread, switchActiveThread } from "./reducers";
 
 const Role = ({ image, heading, handleClick, value }) => {
   return (
@@ -17,9 +19,16 @@ const Role = ({ image, heading, handleClick, value }) => {
 
 const ChooseRole = ({ activeThread }) => {
   const dispatch = useDispatch();
+  const { activeThread: activeThreadId } = useAppSelector(
+    (state) => state.converSationPanel
+  );
 
-  console.log(activeThread, "active choose role");
+  console.log(activeThread, !activeThreadId, "active choose role");
   function handleClick(value) {
+    if (!activeThreadId) {
+      dispatch(createNewThread());
+      dispatch(switchActiveThread("newThread"));
+    }
     dispatch(selectRole(value));
   }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import ResponseCard from "./ResponseCard";
 import OptionInput from "./OptionInput";
+import Loading from "./Loading";
 
 const Chats = ({ conversations, activeThread }) => {
   console.log(conversations, "convo", activeThread);
@@ -27,12 +28,22 @@ const Chats = ({ conversations, activeThread }) => {
       {Object.entries(conversations)?.map(([key, convo]) => {
         return (
           <>
-            <ResponseCard initial={"RS"} isGenesis={false} text={convo.query} />
             <ResponseCard
-              initial={" MU"}
-              isGenesis={true}
-              text={`${convo?.answer}`}
+              initial={"RS"}
+              isGenesis={false}
+              text={convo?.query}
             />
+            {!convo?.loading ? (
+              convo?.answer && (
+                <ResponseCard
+                  initial={" MU"}
+                  isGenesis={true}
+                  text={`${convo?.answer}`}
+                />
+              )
+            ) : (
+              <Loading />
+            )}
           </>
         );
       })}

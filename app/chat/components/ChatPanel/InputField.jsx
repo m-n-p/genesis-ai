@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import createNewQuestion from "./actions/conversation";
 import Loader from "../Loader";
+import { addQuestionToList } from "../ConversationPanel/reducers";
 
 const InputField = ({ activeThread }) => {
   const inputRef = useRef(null);
@@ -12,6 +13,7 @@ const InputField = ({ activeThread }) => {
   async function askQuestion(e) {
     try {
       setLoading(true);
+      dispatch(addQuestionToList({ query: inputRef.current.value }));
       dispatch(
         createNewQuestion({
           query: inputRef.current.value,

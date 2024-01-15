@@ -1,6 +1,9 @@
 import React from "react";
 
 const ResponseCard = ({ initial, isGenesis, text, loading }) => {
+  let editedText = text.replace(/\n/g, "<br />");
+  editedText = editedText.replace(/\*/g, "");
+
   return (
     <div
       className={
@@ -21,7 +24,7 @@ const ResponseCard = ({ initial, isGenesis, text, loading }) => {
           <p
             className="max-w-full text-wrap	 flex items-center"
             dangerouslySetInnerHTML={{
-              __html: text.replace(/\n/g, "<br />"),
+              __html: editedText,
             }}
           ></p>
           {/* <p className="max-w-full text-wrap	 flex items-center ">{text}</p> */}

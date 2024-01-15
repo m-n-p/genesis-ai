@@ -39,52 +39,57 @@ const Login = () => {
   };
 
   return (
-    <div className="relative w-screen h-screen">
-      <div className="loginContainer">
-        <div className="logo flex items-center space-x-2">
-          <h1 className="adventfont text-4xl tracking-wide text-white ">
-            Market Universe <sup>TM</sup> by
-          </h1>
-          <Link href={"/home"}>
-            <Image
-              width={200}
-              height={200}
-              src="/MUlogo.png"
-              alt="Market Unwinded Logo"
-            />
-          </Link>
-        </div>
+    <div className="relative w-screen h-screen loginback">
+      <div
+        className="relative w-full h-full bg-black bg-opacity-15"
+        style={{ zIndex: 100 }}
+      >
+        <div className="loginContainer">
+          <div className="logo flex items-center space-x-2">
+            <h1 className="adventfont text-4xl tracking-wide text-white ">
+              Market Universe <sup>TM</sup> by
+            </h1>
+            <Link href={"/home"}>
+              <Image
+                width={200}
+                height={200}
+                src="/MUlogo.png"
+                alt="Market Unwinded Logo"
+              />
+            </Link>
+          </div>
 
-        <div className="formWrapper">
-          <form className="form">
-            <h1 className="title ">LogIn to Market Universe</h1>
-            <label className="inputLabel">Email</label>
-            <input
-              type="email"
-              ref={emailRef}
-              className="input"
-              placeholder="Email Address"
-              required
-            />
-            <label className="inputLabel">Password</label>
-            <input
-              type="password"
-              ref={passwordRef}
-              className="input"
-              placeholder="Password"
-              required
-            />
+          <div className="formWrapper">
+            <form className="form">
+              <h1 className="title ">LogIn to Market Universe</h1>
+              <label className="inputLabel">Email</label>
+              <input
+                type="email"
+                ref={emailRef}
+                className="input"
+                placeholder="Email Address"
+                required
+              />
+              <label className="inputLabel">Password</label>
+              <input
+                type="password"
+                ref={passwordRef}
+                className="input"
+                placeholder="Password"
+                required
+              />
 
-            <div className="buttonContainer">
-              <button onClick={signIn} type="submit" className="button">
-                Log In
-              </button>
-            </div>
-          </form>
+              <div className="buttonContainer">
+                <button onClick={signIn} type="submit" className="button">
+                  Log In
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div className="absolute bottom-0 mx-auto flex items-center justify-center w-full">
-        <Footer />
+        <div className="absolute bottom-0 mx-auto flex items-center justify-center w-full">
+          <Footer />
+        </div>
       </div>
     </div>
   );
