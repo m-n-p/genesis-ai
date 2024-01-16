@@ -56,6 +56,6 @@ const conversationPanelSlice = createSlice({
   },
 });
 
-export const { selectRol, addQuestionToList } = conversationPanelSlice.actions;
+export const { selectRole, addQuestionToList } = conversationPanelSlice.actions;
 
 export default conversationPanelSlice.reducer;
