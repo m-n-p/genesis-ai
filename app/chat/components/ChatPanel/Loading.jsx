@@ -6,7 +6,7 @@ const Loading = ({ loading = true }) => {
   useEffect(() => {
     const updateRandomNumber = async () => {
       try {
-        let number = Math.floor(Math.random() * 40);
+        let number = Math.floor(Math.random() * 20);
         await setRandomNumber(number);
       } catch (error) {
         console.error("Error updating random number:", error);
@@ -17,12 +17,12 @@ const Loading = ({ loading = true }) => {
       updateRandomNumber();
     }
 
-    const intervalId = setInterval(updateRandomNumber, 10000);
+    const intervalId = setInterval(updateRandomNumber, 8000);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  console.log(Thoughts);
+  console.log(Thoughts, randomNumber);
 
   return (
     <div className={"w-full flex items-center bg-[#D9D9D9] bg-opacity-10 "}>
