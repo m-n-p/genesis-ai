@@ -7,6 +7,7 @@ export function useAuthStateChange() {
   const dispatch = useAppDispatch();
 
   auth.onAuthStateChanged((user) => {
+    console.log(user, "user journey");
     dispatch(
       setAuthentication({
         uuid: user ? user.uid : "",

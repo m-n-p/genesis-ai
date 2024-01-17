@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import createNewQuestion from "./actions/conversation";
+import { addQuestionToList } from "../ConversationPanel/reducers";
 
 const OptionInput = ({ role }) => {
   const [chosenEngine, setChosenEngine] = useState(null);
@@ -43,6 +44,7 @@ const OptionInput = ({ role }) => {
 
   async function askQuestion(e) {
     try {
+      dispatch(addQuestionToList({ query: inputRef.current.value }));
       dispatch(
         createNewQuestion({
           query: inputRef.current.value,

@@ -8,6 +8,9 @@ const LeftPanel = () => {
   const dispatch = useAppDispatch();
 
   const uuid = useAppSelector((state) => state.authentication.uuid);
+  const useremail = useAppSelector(
+    (state) => state.authentication.emailAddress
+  );
 
   useEffect(() => {
     if (uuid) {
@@ -33,7 +36,7 @@ const LeftPanel = () => {
           width={68}
           height={66}
         />
-        <div className="text-black px-2">{"rohith@montaigne.co"}</div>
+        <div className="text-black px-2">{useremail && useremail}</div>
       </button>
     </div>
   );

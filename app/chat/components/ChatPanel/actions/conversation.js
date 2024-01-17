@@ -75,12 +75,15 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (isError(questionResponse)) {
-      return thunkAPI.rejectWithValue({
-        message: questionResponse.error,
-      });
+      return {
+        success: false,
+      };
     }
 
+    console.log(questionResponse, "questionResponse");
+
     return {
+      success: true,
       query: payload.query,
       answers: questionResponse.data.result,
       conversationId: finalConversationId,

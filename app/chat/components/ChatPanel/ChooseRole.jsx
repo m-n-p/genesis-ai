@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { selectRole } from "../ConversationPanel/reducers";
 import { useAppSelector } from "../../../store";
 import { createNewThread, switchActiveThread } from "./reducers";
+import Typewriter from "typewriter-effect";
 
 const Role = ({ image, heading, handleClick, value }) => {
   return (
@@ -23,7 +24,18 @@ const ChooseRole = ({ activeThread }) => {
     (state) => state.converSationPanel
   );
 
-  console.log(activeThread, !activeThreadId, "active choose role");
+  function getTimeGreeting() {
+    const currentHour = new Date().getHours();
+
+    if (currentHour < 12) {
+      return "Good Morning";
+    } else if (currentHour < 17) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  }
+
   function handleClick(value) {
     if (!activeThreadId) {
       dispatch(createNewThread());
@@ -35,7 +47,26 @@ const ChooseRole = ({ activeThread }) => {
   return (
     <div className="w-full h-full flex flex-col items-center adventfont justify-center space-y-20 text-white">
       <div className="flex flex-col items-center space-y-6">
-        <h2 className="text-2xl">Hey Rohith Good Afternoon</h2>
+        <h2 className="text-2xl">
+          <Typewriter
+            options={{
+              cursor: "_",
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .changeDelay(40)
+                .typeString("Hey there")
+                .pauseFor(500)
+                .deleteAll()
+                .typeString(getTimeGreeting())
+                .start()
+                .pauseFor(1000)
+                .callFunction((state) => {
+                  state.elements.cursor.remove();
+                });
+            }}
+          />
+        </h2>
         <p className="text-3xl font-semibold">What Role are we playing now?</p>
       </div>
       <div className="flex justify-between px-12  space-x-36">

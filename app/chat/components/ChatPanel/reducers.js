@@ -33,17 +33,17 @@ const chatPanelSlice = createSlice({
     switchActiveThread: (state, action) => {
       state.activeThread = action.payload;
     },
-    updateNewThread: (state, action) => {
-      let newThreads = { ...threads };
-      console.log(newThreads, "beforeupdate");
-      newThreads.conversations[activeThread].conversationId =
-        action.payload.conversationId;
-      newThreads.conversations[activeThread].title = action.payload.title;
-      newThreads.conversations[activeThread].newThread = false;
-      newThreads.conversations[activeThread].mind = action.payload.mind;
-      console.log(newThreads, "afterupdate");
-      state.threads = newThreads;
-    },
+    // updateNewThread: (state, action) => {
+    //   let newThreads = { ...state.threads };
+    //   console.log(newThreads, "beforeupdate");
+    //   newThreads.conversations[activeThread].conversationId =
+    //     action.payload.conversationId;
+    //   newThreads.conversations[activeThread].title = action.payload.title;
+    //   newThreads.conversations[activeThread].newThread = false;
+    //   newThreads.conversations[activeThread].mind = action.payload.mind;
+    //   console.log(newThreads, "afterupdate");
+    //   state.threads = newThreads;
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllThreads.fulfilled, (state, action) => {
@@ -51,35 +51,33 @@ const chatPanelSlice = createSlice({
       state.threads = action.payload.threads;
     });
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
-      let newThreads = { ...state.threads };
-      let result = {
-        query: action.payload.query,
-        answer: action.payload.answers,
-      };
-      let object = {
-        conversationId: action.payload.conversationId,
-        title: action.payload.query,
-        newThread: false,
-        mind: action.payload.role,
-        thread: {
-          ...newThreads.conversations[state.activeThread].thread,
-          result,
-        },
-      };
-      delete newThreads.conversations.newThread;
-      newThreads.conversations[action.payload.conversationId] = { ...object };
-      console.log(newThreads, "after all updates");
-      state.threads = newThreads;
-      state.activeThread = action.payload.conversationId;
+      if (action.payload.success) {
+        let newThreads = { ...state.threads };
+        let result = {
+          query: action.payload.query,
+          answer: action.payload.answers,
+        };
+        let object = {
+          conversationId: action.payload.conversationId,
+          title: action.payload.query,
+          newThread: false,
+          mind: action.payload.role,
+          thread: {
+            ...newThreads.conversations[state.activeThread].thread,
+            result,
+          },
+        };
+        delete newThreads.conversations.newThread;
+        newThreads.conversations[action.payload.conversationId] = { ...object };
+        console.log(newThreads, "after all updates");
+        state.threads = newThreads;
+        state.activeThread = action.payload.conversationId;
+      }
     });
   },
 });
 
-export const {
-  selectRole,
-  createNewThread,
-  switchActiveThread,
-  updateNewThread,
-} = chatPanelSlice.actions;
+export const { selectRole, createNewThread, switchActiveThread } =
+  chatPanelSlice.actions;
 
 export default chatPanelSlice.reducer;

@@ -1,8 +1,8 @@
 import React from "react";
 
 const ResponseCard = ({ initial, isGenesis, text, loading }) => {
-  let editedText = text.replace(/\n/g, "<br />");
-  editedText = editedText.replace(/\*/g, "");
+  let editedText = text?.replace(/\n/g, "<br />");
+  editedText = editedText?.replace(/\*/g, "");
 
   return (
     <div
