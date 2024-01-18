@@ -9,10 +9,7 @@ import { useAppSelector } from "../store";
 
 const ChatLayout = () => {
   useAuthStateChange();
-  const uuid = useAppSelector((state) => state.authentication.uuid);
   const activeThread = useAppSelector((state) => state.converSationPanel);
-
-  console.log(activeThread, "activeThread", uuid);
 
   return (
     <div className="w-screen h-screen max-h-screen overflow-hidden flex main-container">

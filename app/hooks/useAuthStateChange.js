@@ -7,7 +7,7 @@ export function useAuthStateChange() {
   const dispatch = useAppDispatch();
 
   auth.onAuthStateChanged((user) => {
-    console.log(user, "user journey");
+    user, "user journey";
     dispatch(
       setAuthentication({
         uuid: user ? user.uid : "",
@@ -17,5 +17,5 @@ export function useAuthStateChange() {
     );
   });
 
-  console.log("current user", auth.currentUser);
+  "current user", auth.currentUser;
 }

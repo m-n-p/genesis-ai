@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import InputField from "./InputField";
 import Chats from "./Chats";
@@ -16,6 +17,7 @@ const ChatScreen = ({ activeThread }) => {
     }
   }
 
+  console.log(activeThread, "active");
   return (
     <div className="flex text-white py-6   flex-col h-full max-h-screen overflow-y-hidden space-y-4">
       <h2 className="adventfont text-2xl px-12">
@@ -38,7 +40,18 @@ const ChatScreen = ({ activeThread }) => {
           }}
         />
       </h2>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center space-x-2">
+        <img
+          alt=""
+          className="h-6"
+          src={
+            activeThread?.mind === "Strategist"
+              ? "/roles/cxo.png"
+              : activeThread?.mind === "Researcher"
+              ? "/roles/researcher.png"
+              : activeThread?.mind === "Investor" && "/roles/investor.png"
+          }
+        />
         <h3 className="underline underline-offset-2 font-semibold text-xl">
           {activeThread?.mind}
         </h3>
@@ -51,7 +64,7 @@ const ChatScreen = ({ activeThread }) => {
       </div>
 
       {(activeThread?.mind === "Investor" ||
-        (Object.keys(activeThread?.chats).length !== 0 &&
+        (activeThread?.chats.length !== 0 &&
           (activeThread?.mind === "Researcher" ||
             activeThread?.mind === "Strategist"))) && (
         <InputField activeThread={activeThread} />

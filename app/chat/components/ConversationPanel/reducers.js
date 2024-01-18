@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import createNewQuestion from "../ChatPanel/actions/conversation";
 import getGetCurrentThread from "../ChatPanel/actions/getCurrentThread";
 
 const initialState = {
-  chats: {},
+  chats: [],
   mind: "",
   conversationId: "",
 };
@@ -23,39 +23,39 @@ const conversationPanelSlice = createSlice({
         answer: "",
         loading: true,
       };
-      state.chats =
-        Object.keys(state.chats)?.length > 0
-          ? { ...state.chats, result }
-          : { result };
+      let finalState = [...state.chats];
+      console.log(finalState, result);
+      finalState.push(result);
+      console.log(finalState);
+      state.chats = finalState;
     },
   },
 
   extraReducers(builder) {
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
+      console.log(action.payload, "convo");
       if (action.payload.success) {
-        let keys = Object.keys(state.chats);
-        let lastKey = keys[keys.length - 1];
-        let lastObject = state.chats[lastKey];
-        console.log(action.payload, lastObject, "action.payload");
-        lastObject.answer = action.payload?.answers;
-        lastObject.loading = false;
-        console.log(action.payload);
-        state.chats[lastKey] = lastObject;
+        let length = state.chats?.length;
+        let index = length - 1;
+        let finalChats = [...state.chats];
+        finalChats[index].answer = action.payload?.answers;
+        finalChats[index].loading = false;
+        state.chats = finalChats;
         state.conversationId = action.payload.conversationId;
       } else {
-        let keys = Object.keys(state.chats);
-        let lastKey = keys[keys.length - 1];
-        delete state.chats[lastKey];
+        state.chats.pop();
         state.conversationId = "";
       }
     });
 
     builder.addCase(getGetCurrentThread.fulfilled, (state, action) => {
-      state.chats = action.payload.threads ? action.payload.threads : {};
+      let threads = [...action.payload.threads];
+      if (threads?.length > 0) {
+        threads = threads.reverse();
+      }
+      state.chats = threads;
       state.conversationId = action.payload.conversationId;
       state.mind = action.payload.mind;
-
-      console.log(action.payload, "returned payload");
     });
   },
 });

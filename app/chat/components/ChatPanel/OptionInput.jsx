@@ -39,7 +39,7 @@ const OptionInput = ({ role }) => {
     () => (role === "Strategist" ? strategistOptions : researchOptions),
     [role]
   );
-  console.log(chosenEngine, "chosen");
+  chosenEngine, "chosen";
   const dispatch = useDispatch();
 
   async function askQuestion(e) {
@@ -54,7 +54,7 @@ const OptionInput = ({ role }) => {
         })
       );
     } catch (error) {
-      console.log(error, "error");
+      error, "error";
     }
   }
 

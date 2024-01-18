@@ -4,13 +4,11 @@ import { postRequest, isError } from "../../../../lib/requests";
 const createNewQuestion = createAsyncThunk(
   "chatPanel/createNewQuestion",
   async (payload, thunkAPI) => {
-    console.log("lund");
+    ("lund");
     const {
       authentication: { uuid },
       converSationPanel: { conversationId, mind },
     } = thunkAPI.getState();
-    console.log("call investor");
-    console.log(conversationId, payload, "investor");
     let finalConversationId = conversationId;
 
     if (!finalConversationId) {
@@ -30,13 +28,10 @@ const createNewQuestion = createAsyncThunk(
         });
       }
 
-      console.log(createConversationResponse);
-
       finalConversationId = createConversationResponse.data.conversation_id;
     }
 
     let questionResponse = "";
-    console.log(finalConversationId, uuid, payload);
     if (payload?.api === "query_k1")
       questionResponse = await postRequest("/query_k1/", {
         user_id: uuid,
@@ -56,7 +51,7 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "query_kb") {
-      questionResponse = await postRequest("/query_kc/", {
+      questionResponse = await postRequest("/query_kb/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         query: payload.query,
@@ -79,8 +74,6 @@ const createNewQuestion = createAsyncThunk(
         success: false,
       };
     }
-
-    console.log(questionResponse, "questionResponse");
 
     return {
       success: true,

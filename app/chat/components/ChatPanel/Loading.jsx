@@ -22,7 +22,7 @@ const Loading = ({ loading = true }) => {
     return () => clearInterval(intervalId);
   }, []);
 
-  console.log(Thoughts, randomNumber);
+  Thoughts, randomNumber;
 
   return (
     <div className={"w-full flex items-center bg-[#D9D9D9] bg-opacity-10 "}>

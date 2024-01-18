@@ -21,7 +21,7 @@ const Role = ({ image, heading, handleClick, value }) => {
 const ChooseRole = ({ activeThread }) => {
   const dispatch = useDispatch();
   const { activeThread: activeThreadId } = useAppSelector(
-    (state) => state.converSationPanel
+    (state) => state.chatPanel
   );
 
   function getTimeGreeting() {

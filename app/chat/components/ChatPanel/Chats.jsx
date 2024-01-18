@@ -4,7 +4,7 @@ import OptionInput from "./OptionInput";
 import Loading from "./Loading";
 
 const Chats = ({ conversations, activeThread }) => {
-  console.log(conversations, "convo", activeThread);
+  conversations, "convo", activeThread;
   const scrollableContainerRef = useRef(null);
 
   useEffect(() => {
@@ -20,12 +20,12 @@ const Chats = ({ conversations, activeThread }) => {
       ref={scrollableContainerRef}
       className="flex flex-col py-6 w-full grow max-h-full noscrollbarstyle overflow-y-scroll"
     >
-      {Object.keys(conversations).length === 0 &&
+      {conversations.length === 0 &&
         (activeThread?.mind === "Researcher" ||
           activeThread?.mind === "Strategist") && (
           <OptionInput role={activeThread?.mind} />
         )}
-      {Object.entries(conversations)?.map(([key, convo]) => {
+      {conversations?.map((convo, index) => {
         return (
           <>
             <ResponseCard

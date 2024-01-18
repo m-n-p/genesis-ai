@@ -4,7 +4,7 @@ import getGetCurrentThread from "./actions/getCurrentThread";
 import { switchActiveThread } from "./reducers";
 
 const QuestionsList = () => {
-  const threads = useAppSelector((state) => state.chatPanel);
+  const { conversations } = useAppSelector((state) => state.chatPanel);
   const activeThread = useAppSelector((state) => state.chatPanel.activeThread);
   const dispatch = useAppDispatch();
 
@@ -13,18 +13,10 @@ const QuestionsList = () => {
     dispatch(getGetCurrentThread({ conversationId }));
   }
 
-  const threadsMap =
-    threads?.threads?.conversations &&
-    new Map(Object.entries(threads?.threads?.conversations));
-
-  const threadsArray = threadsMap && Array.from(threadsMap).reverse();
-
-  console.log(threads, "new threasd");
-
   function determineColor(mind) {
     if (!mind) return "#0A7008";
     let checkMindColor = mind.toLowerCase();
-    console.log(checkMindColor);
+    checkMindColor;
     switch (checkMindColor) {
       case "investor":
         return "#E90E0E";
@@ -37,17 +29,19 @@ const QuestionsList = () => {
     }
   }
 
+  console.log(activeThread);
+
   return (
     <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-y-scroll py-5">
-      {threadsArray &&
-        threadsArray?.map(([key, convo], index) => {
+      {conversations &&
+        conversations?.map((convo, index) => {
           return (
             <div
               key={index}
-              onClick={() => handleThreadClick(key)}
+              onClick={() => handleThreadClick(convo.conversation_id)}
               className={
                 "w-full flex py-2 px-1 rounded-md cursor-pointer hover:bg-gray-800 text-white items-center space-x-2 " +
-                (activeThread === key && "bg-gray-700")
+                (activeThread === convo.conversation_id && "bg-gray-700")
               }
             >
               <div
@@ -56,7 +50,7 @@ const QuestionsList = () => {
               >
                 {convo.mind ? convo.mind.slice(0, 3).toUpperCase() : "NEW"}
               </div>
-              <p className="grow max-w-full truncate">{convo?.title}</p>
+              <p className="grow max-w-full  truncate">{convo?.title}</p>
             </div>
           );
         })}

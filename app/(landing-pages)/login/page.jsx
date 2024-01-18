@@ -21,7 +21,6 @@ const Login = () => {
         passwordRef.current.value
       )
         .then((user) => {
-          console.log(user);
           window.location.href = "/chat";
         })
         .catch((err) => {

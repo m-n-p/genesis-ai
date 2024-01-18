@@ -24,7 +24,7 @@ const InputField = ({ activeThread }) => {
       inputRef.current.value = "";
       setLoading(false);
     } catch (error) {
-      console.log(error, "error");
+      error, "error";
     }
   }
 

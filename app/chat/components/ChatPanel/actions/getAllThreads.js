@@ -11,8 +11,6 @@ export const getAllThreads = createAsyncThunk(
       user_id: uuid,
     });
 
-    console.log(threads, "threads");
-
     if (isError(threads)) {
       return thunkAPI.rejectWithValue({
         message: threads.error,
@@ -20,7 +18,7 @@ export const getAllThreads = createAsyncThunk(
     }
 
     return {
-      threads: threads.data.user_info,
+      conversations: threads.data.user_info.conversations,
     };
   }
 );

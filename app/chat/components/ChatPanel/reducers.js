@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { getAllThreads } from "./actions/getAllThreads";
 import createNewQuestion from "./actions/conversation";
 
 const initialState = {
-  threads: {},
+  conversations: [],
   activeThread: null,
 };
 
@@ -13,64 +13,54 @@ const chatPanelSlice = createSlice({
 
   reducers: {
     selectRole: (state, action) => {
-      state.threads.conversations[action.payload.conversationId].mind =
-        action.payload.mind;
+      state.conversations.filter(
+        (x) => x.conversation_id === state.activeThread
+      ).mind = action.payload.mind;
     },
     createNewThread: (state) => {
-      console.log(state, "state thresasd");
       let newThread = {
         mind: "",
-        conversationId: "newThread",
+        conversation_id: "newThread",
         title: "New Question",
-        thread: {},
+        thread: [],
         newThread: true,
       };
-      state.threads.conversations = {
-        ...state.threads.conversations,
-        newThread,
-      };
+      state.conversations = [newThread, ...state.conversations];
     },
     switchActiveThread: (state, action) => {
       state.activeThread = action.payload;
     },
-    // updateNewThread: (state, action) => {
-    //   let newThreads = { ...state.threads };
-    //   console.log(newThreads, "beforeupdate");
-    //   newThreads.conversations[activeThread].conversationId =
-    //     action.payload.conversationId;
-    //   newThreads.conversations[activeThread].title = action.payload.title;
-    //   newThreads.conversations[activeThread].newThread = false;
-    //   newThreads.conversations[activeThread].mind = action.payload.mind;
-    //   console.log(newThreads, "afterupdate");
-    //   state.threads = newThreads;
-    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllThreads.fulfilled, (state, action) => {
-      console.log(action.payload, "actions");
-      state.threads = action.payload.threads;
+      state.conversations = action.payload.conversations;
     });
+
     builder.addCase(createNewQuestion.fulfilled, (state, action) => {
+      console.log(action.payload, "chat");
       if (action.payload.success) {
-        let newThreads = { ...state.threads };
+        let initialiseThreads = current(state.conversations);
+        let newThreads = [...initialiseThreads];
+        let activeThreadId = state.activeThread;
+        console.log(activeThreadId);
+        let activeThread = newThreads.findIndex(
+          (x) => x.conversation_id === activeThreadId
+        );
+
+        console.log(newThreads, activeThreadId, activeThread);
         let result = {
           query: action.payload.query,
           answer: action.payload.answers,
         };
-        let object = {
-          conversationId: action.payload.conversationId,
+        state.conversations[activeThread] = {
+          ...state.conversations[activeThread],
+          conversation_id: action.payload.conversationId,
           title: action.payload.query,
           newThread: false,
           mind: action.payload.role,
-          thread: {
-            ...newThreads.conversations[state.activeThread].thread,
-            result,
-          },
+          thread: [result, ...state.conversations[activeThread].thread],
         };
-        delete newThreads.conversations.newThread;
-        newThreads.conversations[action.payload.conversationId] = { ...object };
-        console.log(newThreads, "after all updates");
-        state.threads = newThreads;
+
         state.activeThread = action.payload.conversationId;
       }
     });
