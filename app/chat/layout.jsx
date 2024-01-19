@@ -8,6 +8,7 @@ import { useAuthStateChange } from "../hooks/useAuthStateChange";
 import { useAppSelector } from "../store";
 import Loader from "./components/Loader";
 import { useRouter } from "next/navigation";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const ChatLayout = () => {
   useAuthStateChange();
@@ -25,6 +26,8 @@ const ChatLayout = () => {
 
   return (
     <div className="w-screen h-screen max-h-screen overflow-hidden flex main-container">
+      <SpeedInsights />
+
       <div className="w-[20%] h-screen overflow-hidden  bg-[#222121]">
         <LeftPanel />
       </div>
