@@ -1,12 +1,15 @@
 import React from "react";
 import { useAppDispatch } from "../../store";
-import { createNewThread } from "./ChatPanel/reducers";
+import { createNewThread, switchActiveThread } from "./ChatPanel/reducers";
+import getGetCurrentThread from "./ChatPanel/actions/getCurrentThread";
 
 const AddButton = () => {
   const dispatch = useAppDispatch();
 
   function handleClick() {
     dispatch(createNewThread());
+    dispatch(switchActiveThread("newThread"));
+    dispatch(getGetCurrentThread({ conversationId: "newThread" }));
   }
 
   return (

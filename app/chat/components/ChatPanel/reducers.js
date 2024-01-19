@@ -5,6 +5,7 @@ import createNewQuestion from "./actions/conversation";
 const initialState = {
   conversations: [],
   activeThread: null,
+  loadingView: true,
 };
 
 const chatPanelSlice = createSlice({
@@ -39,6 +40,7 @@ const chatPanelSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getAllThreads.fulfilled, (state, action) => {
+      state.loadingView = false;
       state.conversations = action.payload.conversations;
     });
 

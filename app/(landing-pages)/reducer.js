@@ -4,6 +4,7 @@ const defaultState = {
   uuid: "",
   emailAddress: "",
   displayName: "",
+  loading: true,
 };
 
 const authenticationReducer = createSlice({
@@ -15,6 +16,7 @@ const authenticationReducer = createSlice({
       state.emailAddress = action.payload.emailAddress;
       state.displayName =
         action.payload.displayName || action.payload.emailAddress.slice(0, 2);
+      state.loading = action.payload.loading;
     },
   },
 });

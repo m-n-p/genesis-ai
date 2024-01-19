@@ -7,15 +7,25 @@ export function useAuthStateChange() {
   const dispatch = useAppDispatch();
 
   auth.onAuthStateChanged((user) => {
-    user, "user journey";
-    dispatch(
-      setAuthentication({
-        uuid: user ? user.uid : "",
-        emailAddress: user ? user.email : "",
-        displayName: user ? user.displayName : "",
-      })
-    );
+    console.log(user, ";user");
+    if (user !== null) {
+      dispatch(
+        setAuthentication({
+          uuid: user ? user.uid : "",
+          emailAddress: user ? user.email : "",
+          displayName: user ? user.displayName : "",
+          loading: false,
+        })
+      );
+    } else {
+      dispatch(
+        setAuthentication({
+          uuid: "",
+          emailAddress: "",
+          displayName: "",
+          loading: false,
+        })
+      );
+    }
   });
-
-  "current user", auth.currentUser;
 }

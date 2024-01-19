@@ -52,9 +52,7 @@ const ChatScreen = ({ activeThread }) => {
               : activeThread?.mind === "Investor" && "/roles/investor.png"
           }
         />
-        <h3 className="underline underline-offset-2 font-semibold text-xl">
-          {activeThread?.mind}
-        </h3>
+        <h3 className=" font-semibold text-xl">{activeThread?.mind}</h3>
       </div>
       <div className="grow flex flex-col overflow-y-hidden max-h-full h-full">
         <Chats

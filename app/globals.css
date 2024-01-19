@@ -19,3 +19,42 @@
 .loginback {
   background: url("../public/loginback.png");
 }
+
+.bg-image {
+  background-image: url("../public/img1.png");
+  background-size: cover;
+  backdrop-filter: blur(100px);
+  /* Add other background properties here */
+}
+
+.g-image1 {
+  background-image: url("../public/g1.png");
+  background-size: cover;
+  backdrop-filter: blur(100px);
+  /* Add other background properties here */
+}
+
+@layer components {
+  .paddingx {
+    @apply px-[16rem];
+  }
+  .paddingy {
+    @apply py-[1rem];
+  }
+  .paddingdiv {
+    @apply py-[6rem];
+  }
+  .desctext1 {
+    @apply text-[40px];
+  }
+  .desctext2 {
+    @apply text-[25px];
+  }
+  .title1 {
+    @apply text-[60px];
+  }
+}
+
+.font-acme {
+  font-family: Acme;
+}
