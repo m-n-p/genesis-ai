@@ -17,20 +17,20 @@ const getRequest = async (endpoint) => {
   }
 };
 
-// const postRequest = async (endpoint, data) => {
-//   try {
-//     const response = await instance.post(endpoint, data);
-//     return response.data;
-//   } catch (error) {
-//     console.error(`Error in POST request: ${endpoint} ${error}`);
-//     const axiosError = error;
-//     return (
-//       axiosError?.response?.data || { error: "An error occurred", status: 500 }
-//     );
-//   }
-// };
+ const postRequest = async (endpoint, data) => {
+  try {
+     const response = await instance.post(endpoint, data);
+    return response.data;
+   } catch (error) {
+    console.error(`Error in POST request: ${endpoint} ${error}`);
+    const axiosError = error;
+   return (
+    axiosError?.response?.data || { error: "An error occurred", status: 500 }
+    );
+   }
+ };
 
-const postRequest = async (endpoint, data) => {
+{/*const postRequest = async (endpoint, data) => {
   try {
     let sendata = {
       endpoint: endpoint,
@@ -61,7 +61,7 @@ const postRequest = async (endpoint, data) => {
       axiosError?.response?.data || { error: "An error occurred", status: 500 }
     );
   }
-};
+};*/}
 
 const isError = (data) => {
   return data.error !== undefined && data.status !== undefined;
