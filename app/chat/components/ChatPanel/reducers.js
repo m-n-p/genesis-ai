@@ -18,6 +18,12 @@ const chatPanelSlice = createSlice({
       ).mind = action.payload.mind;
     },
     createNewThread: (state) => {
+      let findIndex = state.conversations.findIndex(
+        (x) => x.conversation_id === "newThread"
+      );
+      if (findIndex !== -1) {
+        return;
+      }
       let newThread = {
         mind: "",
         conversation_id: "newThread",
