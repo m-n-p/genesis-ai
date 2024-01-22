@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Thoughts } from "../../../static/thoughts";
+import Typewriter from "typewriter-effect";
 
 const Loading = ({ loading = true }) => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [isDelayed, setIsDelayed] = useState(true); // State to handle the initial delay
+  const hats = ["Thiking...", "Learning..."];
 
   useEffect(() => {
     // Set a timeout to remove the delay after 3 seconds
@@ -43,11 +45,20 @@ const Loading = ({ loading = true }) => {
   ) : (
     <div className={"w-full flex items-center bg-[#D9D9D9] bg-opacity-10 "}>
       <div className="flex space-x-3 py-4 w-4/5 mx-auto flex-col items-center space-y-2">
-        <p>Our knowledge is working at your service...</p>
+        <p>
+          {" "}
+          <Typewriter
+            options={{
+              strings: hats,
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </p>
         <h2 className="font-semibold text-lg">
           {Thoughts[randomNumber]?.title}
         </h2>
-        <p className="text-sm font-light italic text-center">
+        <p className="text-base font-light  text-center">
           {`"${Thoughts[randomNumber]?.description}"`}
         </p>
         <a
