@@ -61,7 +61,7 @@ const createNewQuestion = createAsyncThunk(
     }
 
     if (payload?.api === "query_k2") {
-      questionResponse = await postRequest("/query_k2/", {
+      questionResponse = await postRequest("/query_k1/", {
         user_id: uuid,
         conversation_id: finalConversationId,
         query: payload.query,
