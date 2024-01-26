@@ -114,7 +114,7 @@ const OptionInput = ({ role }) => {
         </div>
         <button
           onClick={askQuestion}
-          className="w-max px-32 mb-12 py-3 rounded-full bg-[#4135bb] mx-auto "
+          className="w-max px-32 mb-12 py-3 rounded-full bg-[#4135bb] mx-auto font-semibold"
         >
           Ask Me!
         </button>

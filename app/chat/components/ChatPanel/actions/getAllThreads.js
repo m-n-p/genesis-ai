@@ -12,13 +12,18 @@ export const getAllThreads = createAsyncThunk(
     });
 
     if (isError(threads)) {
+      console.log("error");
       return thunkAPI.rejectWithValue({
         message: threads.error,
       });
     }
 
+    console.log(threads, "threads");
+
     return {
-      conversations: threads.data.user_info.conversations,
+      conversations: threads?.data?.user_info?.conversations
+        ? threads.data.user_info.conversations
+        : [],
     };
   }
 );

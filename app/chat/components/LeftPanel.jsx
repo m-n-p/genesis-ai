@@ -63,7 +63,11 @@ const LeftPanel = () => {
           <p>{useremail && useremail}</p>
           {!loading && uuid && (
             <button onClick={handleLogout}>
-              <img alt="" src="/shutdown.png" className="h-8 w-8" />
+              <img
+                alt=""
+                src="/shutdown.png"
+                className="!h-8 !w-8 !aspect-square"
+              />
             </button>
           )}
         </div>

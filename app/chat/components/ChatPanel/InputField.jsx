@@ -47,7 +47,7 @@ const InputField = ({ activeThread }) => {
         />
         <button
           onClick={askQuestion}
-          className="bg-[#1B68DC] rounded-full px-4 py-2 absolute right-3 top-1/2 -translate-y-1/2 w-28"
+          className="bg-[#1B68DC] rounded-full px-4 py-2 absolute right-3 top-1/2 -translate-y-1/2 w-28 font-semibold"
         >
           {loading ? <Loader /> : " Ask Me!"}
         </button>

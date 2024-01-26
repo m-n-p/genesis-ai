@@ -32,7 +32,7 @@ const QuestionsList = () => {
   console.log(activeThread);
 
   return (
-    <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-y-scroll py-5">
+    <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-x-hidden  overflow-y-scroll py-5">
       {conversations &&
         conversations?.map((convo, index) => {
           return (
@@ -40,17 +40,27 @@ const QuestionsList = () => {
               key={index}
               onClick={() => handleThreadClick(convo.conversation_id)}
               className={
-                "w-full flex py-2 px-1 rounded-md cursor-pointer hover:bg-gray-800 text-white items-center space-x-2 " +
+                "w-full flex py-2 px-1 rounded-md cursor-pointer  hover:bg-gray-800 text-white items-center space-x-2 " +
                 (activeThread === convo.conversation_id && "bg-gray-700")
               }
             >
-              <div
-                className="py-0.5 px-3 w-16 text-center rounded-full"
-                style={{ background: determineColor(convo?.mind) }}
-              >
-                {convo.mind ? convo.mind.slice(0, 3).toUpperCase() : "NEW"}
+              <div className="w-[50px]">
+                <button
+                  type="button"
+                  className="py-0.5  !w-[50px] text-center rounded-full"
+                  style={{
+                    background: determineColor(convo?.mind),
+                  }}
+                >
+                  {" "}
+                  {convo.mind ? convo.mind.slice(0, 3).toUpperCase() : "NEW"}
+                </button>
               </div>
-              <p className="grow max-w-full  truncate">{convo?.title}</p>
+
+              <div className="grow">
+                {" "}
+                <span className="  ">{convo?.title}</span>
+              </div>
             </div>
           );
         })}

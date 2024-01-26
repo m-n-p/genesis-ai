@@ -5,7 +5,7 @@ import Typewriter from "typewriter-effect";
 const Loading = ({ loading = true }) => {
   const [randomNumber, setRandomNumber] = useState(0);
   const [isDelayed, setIsDelayed] = useState(true); // State to handle the initial delay
-  const hats = ["Thiking...", "Learning...", "Typing..."];
+  const hats = ["Thinking...", "Learning...", "Typing..."];
 
   useEffect(() => {
     // Set a timeout to remove the delay after 3 seconds
