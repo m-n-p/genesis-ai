@@ -53,7 +53,7 @@ const QuestionsList = () => {
     <div className="flex flex-col space-y-2 grow h-full noscrollbarstyle overflow-x-hidden  overflow-y-scroll py-5">
       {conversations?.length > 0 && (
         <input
-          placeholder="Quwey conversations"
+          placeholder="Query conversations"
           className="border-b bg-transparent mb-2 w-11/12 mx-auto outline-none focus:border-purple-400 py-1 text-lg px-1"
           value={filterQuery}
           onChange={(e) => setFilterQuery(e.target.value)}
