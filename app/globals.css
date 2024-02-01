@@ -36,25 +36,114 @@
 
 @layer components {
   .paddingx {
-    @apply px-[16rem];
+    @apply px-[0.5rem];
   }
   .paddingy {
     @apply py-[1rem];
   }
   .paddingdiv {
-    @apply py-[6rem];
+    @apply py-[1rem];
   }
   .desctext1 {
-    @apply text-[40px];
+    @apply text-[18px];
   }
   .desctext2 {
-    @apply text-[25px];
+    @apply text-[16px];
   }
   .title1 {
-    @apply text-[60px];
+    @apply text-[30px];
+  }
+
+  /* responsive */
+  @screen md {
+    .paddingx {
+      @apply px-[1rem];
+    }
+    .desctext1 {
+      @apply text-[25px];
+    }
+    .paddingdiv {
+      @apply py-[2rem];
+    }
+    .title1 {
+      @apply text-[30px];
+    }
+    .desctext2 {
+      @apply text-[20px];
+    }
+  }
+  @screen lg {
+    .paddingx {
+      @apply px-[6rem];
+    }
+    .desctext1 {
+      @apply text-[40px];
+    }
+    .paddingdiv {
+      @apply py-[3rem];
+    }
+    .title1 {
+      @apply text-[40px];
+    }
+    .desctext2 {
+      @apply text-[25px];
+    }
+  }
+
+  @screen xl {
+    .paddingx {
+      @apply px-[10rem];
+    }
+    .paddingdiv {
+      @apply py-[4rem];
+    }
+    .title1 {
+      @apply text-[50px];
+    }
+  }
+
+  @screen xxl {
+    .paddingx {
+      @apply px-[16rem];
+    }
+    .paddingdiv {
+      @apply py-[6rem];
+    }
+    .title1 {
+      @apply text-[60px];
+    }
   }
 }
 
 .font-acme {
   font-family: Acme;
+}
+/* shdhsbd */
+.container {
+  display: flex;
+  /* height: 100vh; */
+  align-items: center;
+}
+
+.projectContainer {
+  position: relative;
+  width: 100%;
+}
+
+.projectContainer div {
+  /* border-top: 1px solid black; */
+  cursor: pointer;
+  position: relative;
+  margin-bottom: -2vw;
+  background-color: white;
+}
+
+.projectContainer div p {
+  margin: 0px;
+  font-size: 5vw;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+.projectContainer div p {
+  pointer-events: none;
 }

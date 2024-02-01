@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import React from "react";
 
 const Header = () => {
@@ -10,16 +8,13 @@ const Header = () => {
         zIndex: 20,
       }}
     >
-      <div className="w-[20%]">
-        <img alt="" className="full" src="/logowhite.png" />
+      <div className="w-[50%] md:w-[30%] lg:w-[20%]">
+        <img className="full" src="/logowhite.png" />
       </div>
 
-      <Link
-        href={"/login"}
-        className="bg-black  h-fit py-3 px-6 rounded-lg text-sm"
-      >
+      <button className="bg-black  h-fit py-3 px-6 rounded-lg text-sm">
         Login
-      </Link>
+      </button>
     </div>
   );
 };
