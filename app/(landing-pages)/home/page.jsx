@@ -235,7 +235,7 @@ export default function Home() {
                 <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
                   <h3 class="text-lg font-semibold text-white">
                     Market Universe has been instrumental in shaping our global
-                    market strategy — it's a game-changer.
+                    market strategy — its a game-changer.
                   </h3>
                 </blockquote>
                 <figcaption class="flex items-center justify-center ">
