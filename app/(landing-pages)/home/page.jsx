@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 
 //
 import Header from "../../../components/Header";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -118,35 +124,47 @@ export default function Home() {
                 spaceBetween={30}
                 className="mySwiper"
                 loop={true}
-                navigation={true}
-                modules={[Navigation]}
+                navigation={false}
+                modules={[Navigation, Autoplay]}
+                autoplay={{
+                  delay: 1000,
+                  disableOnInteraction: false,
+                }}
               >
-                <SwiperSlide>
+                {/* <SwiperSlide>
                   <MainComp
                     text="HealthTech Advancements"
                     imgsrc="/s0.png"
                     des="Empower healthcare innovation with data-centric market intelligence. Enhance HealthTech Strategy"
                   />
-                </SwiperSlide>
+                </SwiperSlide> */}
                 <SwiperSlide>
                   <MainComp
-                    text="HealthTech Advancements"
-                    imgsrc="/s0.png"
-                    des="Empower healthcare innovation with data-centric market intelligence. Enhance HealthTech Strategy"
+                    text="AgriTech Innovations"
+                    imgsrc="/s1.png"
+                    des="Empower AgriTech innovation with data-centric market intelligence. Enhance AgriTech Strategy"
+                  />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                  <MainComp
+                    text="Semiconductor Strategies"
+                    imgsrc="/s2.png"
+                    des="Empower Semiconductor innovation with data-centric market intelligence. Enhance Semiconductor Strategy"
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <MainComp
-                    text="HealthTech Advancements"
-                    imgsrc="/s0.png"
-                    des="Empower healthcare innovation with data-centric market intelligence. Enhance HealthTech Strategy"
+                    text="Aerospace Ascent"
+                    imgsrc="/s4.png"
+                    des="Empower Aerospace innovation with data-centric market intelligence. Enhance Aerospace Strategy"
                   />
                 </SwiperSlide>
                 <SwiperSlide>
                   <MainComp
-                    text="HealthTech Advancements"
-                    imgsrc="/s0.png"
-                    des="Empower healthcare innovation with data-centric market intelligence. Enhance HealthTech Strategy"
+                    text="Pet Care Market Pulse"
+                    imgsrc="/s3.png"
+                    des="Empower Pet Care Market Pulse innovation with data-centric market intelligence. Enhance Pet Care Market Pulse Strategy"
                   />
                 </SwiperSlide>
               </Swiper>
