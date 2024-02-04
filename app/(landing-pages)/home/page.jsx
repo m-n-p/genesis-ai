@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useEffect, useState } from "react";
 
@@ -9,12 +10,14 @@ import {
   Scrollbar,
   A11y,
   Autoplay,
+  EffectCoverflow,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import SlideComp from "../../../components/SlideComp";
 import MainComp from "../../../components/MainComp";
@@ -22,6 +25,7 @@ import GridComp from "../../../components/GridComp";
 import Footer from "../../../components/Footer";
 
 import { useWindowDimensions } from "../../../components/useWindowDimension";
+import Link from "next/link";
 
 export default function Home() {
   const { width } = useWindowDimensions();
@@ -46,167 +50,170 @@ export default function Home() {
     hasWindow && (
       <div>
         <div className=" bg-image ">
-          <div className="bg-opacity-30  bg-[#000D2DCF] ">
+          <div className="bg-opacity-80  bg-black ">
             <Header />
             <div
               style={{
                 zIndex: 20,
               }}
-              className="paddingx paddingy "
+              className="paddingx pt-12 pb-44 flex flex-col space-y-12"
             >
-              <div className="flex flex-col space-y-6 text-center text-white">
+              <div className="flex flex-col space-y-8 text-center text-white">
                 <div
-                  className="text-[50px] lg:text-[80px] font-[500] font-acme line"
+                  className="text-[50px] lg:text-[70px] font-[600] tracking-wider  modernefont"
                   id="quote"
                 >
-                  <span className="text-[#FF1D6E]">Navigating</span>
-                  <span> Tomorrows Markets </span>
-                  <span className="text-[#FF1D6E]">Today</span>
+                  Navigating
+                  <span className="application_blue"> Tomorrows</span>
+                  <span> Markets </span>
+                  <span className="application_blue">Today</span>
                 </div>
-                <div className="w-[80%] mx-auto desctext1">
+                <p className="w-[80%] mx-auto text-3xl font-light">
                   Empower your strategic decisions with actionable intelligence
-                  from Market <span className="text-[#FF1D6E]">Universe™</span>
-                </div>
+                  from{" "}
+                  <span className="application_blue block">
+                    Market Universe™
+                  </span>
+                </p>
               </div>
-              <div className="paddingdiv text-center text-white flex flex-col space-y-6">
-                <div className="md:w-[80%] lg:w-[60%] mx-auto desctext2">
+              <div className=" text-center text-white flex flex-col space-y-8 text-xl">
+                <div className="md:w-[80%] lg:w-[60%] mx-auto font-extralight">
                   Join the vanguard of industry leaders who choose Market
                   Universe to illuminate the path to business excellence. With
                   daily updated insights and tailored strategy advisories, make
                   every decision count
                 </div>
-                <button className="bg-[#FF1D6E] w-fit mx-auto py-3 px-6 rounded-full text-sm font-[600]">
-                  Experience Now
-                </button>
+                <Link
+                  href={"https://calendly.com/partners-mandp/30min"}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-blue-600 hover:bg-blue-500 w-fit mx-auto py-4 px-10 text-xl rounded-full  font-semibold"
+                >
+                  Get a ticket <span className="text-2xl">🎫</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="  paddingx">
-          <div className="flex flex-col space-y-6 text-center text-white paddingdiv">
-            <div className="title1 font-[500] font-acme text-[#15254C]">
-              Step Into the Universe of
-              <span className="text-[#FF1D6E]"> Strategic Mastery </span>{" "}
+        <div className=" py-44 paddingx">
+          <div className="flex flex-col space-y-8 text-center text-black ">
+            <div className=" font-[500]  desctext1 modernefont tracking-wide">
+              Step Into the Universe of{"  "}
+              <span className="application_blue font-bold underline underline-offset-4">
+                Strategic Mastery
+              </span>{" "}
             </div>
-            <div className="w-[80%] mx-auto desctext2 text-[#15254C]">
+            <div className="w-[80%] mx-auto  desctext2">
               Instantly navigate the potential of{" "}
-              <span className="text-[#FF1D6E]">Market Universe.</span>
+              <span className="application_blue">Market Universe.</span>
             </div>
             <div className="w-full mx-auto">
-              <img className="mx-auto w-[90%]" src="/video.png" />
+              <img
+                className="mx-auto rounded-xl w-[80%]"
+                src="/app.png "
+                alt=""
+              />
             </div>
-            <div className="mx-auto w-[90%] text-sm text-[#15254C]">
-              Click Experience Now to dive into an interactive demo. Witness
-              firsthand how our engines equip you with unparalleled market
-              insights and strategic foresight, tailored for the innovators and
-              pioneers of industry.
-            </div>
-            <button className="bg-[#FF1D6E] w-fit mx-auto py-3 px-6 rounded-full text-sm font-[600]">
-              Experience Now
-            </button>
           </div>
         </div>
-        <div className="  paddingx">
-          <div className="flex flex-col space-y-6 text-center text-white ">
-            <div className="title1 font-[500] font-acme text-[#15254C]">
-              <span className="text-[#FF1D6E]"> Industries and</span>{" "}
-              Applications
+        <div className=" pb-44 ">
+          <div className="flex flex-col space-y-8 text-center text-black ">
+            <div className="paddingx desctext1 font-[500] modernefont tracking-wide">
+              <span className="application_blue font-bold underline underline-offset-4">
+                Industries
+              </span>{" "}
+              and{" "}
+              <span className="application_blue font-bold underline underline-offset-4">
+                Applications
+              </span>
             </div>
-            <div className=" mx-auto desctext2 text-[#15254C]">
+            <div className="paddingx  mx-auto desctext2 ">
               From the ground up in AgriTech to the soaring aspirations of
               Aerospace, Market Universe provides the strategic compass for
               diverse industries to navigate their unique market landscapes.
             </div>
-            <div className="w-full">
+            <div className="w-full !mt-16">
               <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
-                className="mySwiper"
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
                 loop={true}
-                navigation={false}
-                modules={[Navigation, Autoplay]}
+                slidesPerView={"auto"}
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 2.5,
+                }}
                 autoplay={{
                   delay: 1000,
-                  disableOnInteraction: false,
+                  disableOnInteraction: true,
                 }}
+                modules={[Autoplay, EffectCoverflow]}
+                className="swiper_container"
               >
-                {/* <SwiperSlide>
-                  <MainComp
-                    text="HealthTech Advancements"
-                    imgsrc="/s0.png"
-                    des="Empower healthcare innovation with data-centric market intelligence. Enhance HealthTech Strategy"
-                  />
-                </SwiperSlide> */}
-                <SwiperSlide>
-                  <MainComp
-                    text="AgriTech Innovations"
-                    imgsrc="/s1.png"
-                    des="Empower AgriTech innovation with data-centric market intelligence. Enhance AgriTech Strategy"
-                  />
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <MainComp
-                    text="Semiconductor Strategies"
-                    imgsrc="/s2.png"
-                    des="Empower Semiconductor innovation with data-centric market intelligence. Enhance Semiconductor Strategy"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide className="border rounded-md">
                   <MainComp
                     text="Aerospace Ascent"
-                    imgsrc="/s4.png"
+                    imgsrc="/Aerospace.png"
                     des="Empower Aerospace innovation with data-centric market intelligence. Enhance Aerospace Strategy"
                   />
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide className="border rounded-md">
                   <MainComp
-                    text="Pet Care Market Pulse"
-                    imgsrc="/s3.png"
-                    des="Empower Pet Care Market Pulse innovation with data-centric market intelligence. Enhance Pet Care Market Pulse Strategy"
+                    text="AgriTech Innovations"
+                    imgsrc="/AgriTech.png"
+                    des="Empower AgriTech innovation with data-centric market intelligence. Enhance AgriTech Strategy"
                   />
                 </SwiperSlide>
-              </Swiper>
-            </div>
+                <SwiperSlide className="border rounded-md">
+                  <MainComp
+                    text="EV"
+                    imgsrc="/EV.png"
+                    des="Empower EV innovation with data-centric market intelligence. Enhance EV Strategy"
+                  />
+                </SwiperSlide>
 
-            <div>
-              <Swiper
-                slidesPerView={getSlides()}
-                spaceBetween={30}
-                className="mySwiper"
-                loop={true}
-                navigation={true}
-                modules={[Navigation]}
-              >
-                <SwiperSlide>
-                  <SlideComp text="AgriTech Innovations" imgsrc="/s1.png" />
+                <SwiperSlide className="border rounded-md">
+                  <MainComp
+                    text="FoodTech"
+                    imgsrc="/FoodTech.png"
+                    des="Empower FoodTech innovation with data-centric market intelligence. Enhance FoodTech Strategy"
+                  />
                 </SwiperSlide>
-                <SwiperSlide>
-                  <SlideComp text="Semiconductor Strategies" imgsrc="/s2.png" />
+                <SwiperSlide className="border rounded-md">
+                  <MainComp
+                    text="HealthTech"
+                    imgsrc="/HealthTech.png"
+                    des="Empower HealthTech innovation with data-centric market intelligence. Enhance FoodTech Strategy"
+                  />
                 </SwiperSlide>
-                <SwiperSlide>
-                  <SlideComp text="Pet Care Market Pulse" imgsrc="/s3.png" />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <SlideComp text="Aerospace Ascent" imgsrc="/s4.png" />
+                <SwiperSlide className="border rounded-md">
+                  <MainComp
+                    text="Semiconductor Strategies"
+                    imgsrc="/Semiconductor.png"
+                    des="Empower Semiconductor innovation with data-centric market intelligence. Enhance Semiconductor Strategy"
+                  />
                 </SwiperSlide>
               </Swiper>
             </div>
           </div>
         </div>
-        <div className="paddingdiv  paddingx">
-          <div className="flex flex-col space-y-6 text-center text-white ">
-            <div className="title1 font-[500] font-acme text-[#15254C]">
-              Market Universe
-              <span className="text-[#FF1D6E]"> Advantage</span>
+        <div className="pb-44  ">
+          <div className="flex flex-col space-y-8 text-center text-black ">
+            <div className="paddingx desctext1 font-[500] modernefont tracking-wide">
+              Market Universe{" "}
+              <span className="application_blue font-bold underline underline-offset-4">
+                Advantage
+              </span>
             </div>
-            <div className=" mx-auto desctext2 text-[#15254C]">
+            <div className="paddingx mx-auto desctext2 ">
               Market Universe isnt just a tool; its your strategic partner,
               intelligence advisor, and the compass guiding your business
               towards sustainable growth and scalability.
             </div>
-            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="xl:w-4/5 mx-auto 	 sm:w-10/12 w-11/12 grid  grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-6 justify-center">
               <GridComp
                 imgsrc="/g1.png"
                 title="Sales Strategy"
@@ -222,6 +229,7 @@ export default function Home() {
                 title="Market Intelligence"
                 desc="Access daily updated market intelligence tailored to niche industries"
               />
+
               <GridComp
                 imgsrc="/g4.png"
                 title="Investment Guidance"
@@ -232,111 +240,46 @@ export default function Home() {
                 title="Competitive Analysis"
                 desc="Gain a competitive edge with in-depth analysis of market rivals"
               />
-              <div className="flex items-center justify-center title1 font-[500] font-acme text-[#15254C]">
-                7 Niche Verticals 100+ Markets
+              <div className="flex items-center border border-gray-200 rounded-lg  justify-center desctext1 font-extralight  ">
+                <sapn className="application_blue mx-2 font-semibold">7</sapn>
+                {"  "} Niche Verticals
+                {"  "}
+                <sapn className="application_blue mx-2 font-semibold">
+                  100+ Markets
+                </sapn>
               </div>
             </div>
           </div>
         </div>
-        <div className="  paddingx">
-          <div className="flex flex-col space-y-6 text-center text-white ">
-            <div className="title1 font-[500] font-acme text-[#15254C]">
-              Endorsed by
-              <span className="text-[#FF1D6E]">Industry Leaders</span>
-            </div>
-            <div className=" mx-auto desctext2 text-[#15254C]">
-              Real Success Stories from Global Pioneers
-            </div>
 
-            <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm  md:mb-12 grid-cols-1 lg:grid-cols-3 bg-[#15254C]">
-              <figure class="flex flex-col items-center justify-center p-8 text-center bg-[#15254C] border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg ">
-                <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                  <h3 class="text-lg font-semibold text-white">
-                    Market Universe has been instrumental in shaping our global
-                    market strategy — its a game-changer.
-                  </h3>
-                </blockquote>
-                <figcaption class="flex items-center justify-center ">
-                  <img
-                    class="rounded-full w-9 h-9"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                    alt="profile picture"
-                  />
-                  <div class="space-y-0.5 font-medium text-white text-left rtl:text-right ms-3">
-                    <div>Amy Doe</div>
-                    <div class="text-sm text-gray-400 ">
-                      CEO, Global Tech Innovations
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-              <figure class="flex flex-col items-center justify-center p-8 text-center bg-[#15254C] border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg  ">
-                <blockquote class="max-w-2xl mx-auto mb-4  lg:mb-8 text-gray-400">
-                  <h3 class="text-lg font-semibold text-white">
-                    The insights provided by Market Universe are unmatched in
-                    precision and relevance. Absolutely crucial for our
-                    decision-making processes.
-                  </h3>
-                </blockquote>
-                <figcaption class="flex items-center justify-center ">
-                  <img
-                    class="rounded-full w-9 h-9"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
-                    alt="profile picture"
-                  />
-                  <div class="space-y-0.5 font-medium text-white text-left rtl:text-right ms-3">
-                    <div>Jane Smith</div>
-                    <div class="text-sm text-gray-400">
-                      Chief Strategy Officer, HealthTech Solutions
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-
-              <figure class="flex flex-col items-center justify-center p-8 text-center bg-[#15254C] border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-ss-lg  ">
-                <blockquote class="max-w-2xl mx-auto mb-4  lg:mb-8 text-gray-400">
-                  <h3 class="text-lg font-semibold text-white">
-                    As an investor, Market Universe has been pivotal in
-                    identifying high-potential opportunities and minimizing
-                    risk.
-                  </h3>
-                </blockquote>
-                <figcaption class="flex items-center justify-center ">
-                  <img
-                    class="rounded-full w-9 h-9"
-                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                    alt="profile picture"
-                  />
-                  <div class="space-y-0.5 font-medium text-white text-left rtl:text-right ms-3">
-                    <div>Michelle Lee</div>
-                    <div class="text-sm text-gray-400">
-                      Venture Capital, GrinTech Ventures
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
+        <div className="pb-44  paddingx">
+          <div className="flex flex-col space-y-8 text-center text-black ">
+            <div className="desctext1 font-[500]  modernefont tracking-wide">
+              Your Market Strategy{" "}
+              <span className="application_blue font-bold underline underline-offset-4">
+                Transformed
+              </span>
             </div>
-          </div>
-        </div>
-        <div className="  paddingx">
-          <div className="flex flex-col space-y-6 text-center text-white paddingdiv">
-            <div className="title1 font-[500] font-acme text-[#15254C]">
-              Your Market Strategy
-              <span className="text-[#FF1D6E]"> , Transformed </span>{" "}
-            </div>
-            <div className="w-[80%] mx-auto desctext2 text-[#15254C]">
-              Join the elite circle of Market Universe strategists
-            </div>
-
-            <div className="mx-auto w-[90%] desctext1 text-[#15254C]">
+            <div className="mx-auto w-[90%]  desctext2">
               Embrace the comprehensive, data-driven decision-making that Market
               Universe offers. Click below to schedule your personalized
               demonstration, and lets chart the course to your market leadership
               together
             </div>
-            <button className="bg-[#FF1D6E] w-fit mx-auto py-3 px-6 rounded-full text-sm font-[600]">
-              Schedule Demo
-            </button>
+            <div className="flex flex-col space-y-4">
+              <div className="w-[80%] mx-auto desctext2 font-extralight ">
+                Join the elite circle of Market Universe strategists
+              </div>
+
+              <Link
+                href={"https://calendly.com/partners-mandp/30min"}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-blue-600 hover:bg-blue-500 w-fit mx-auto py-4 px-10 text-xl text-white rounded-full  font-semibold"
+              >
+                Schedule Demo
+              </Link>
+            </div>
           </div>
         </div>
         <div className="  ">

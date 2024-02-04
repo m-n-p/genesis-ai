@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body,
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, roboto,
+    oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+}
+
+@font-face {
+  font-family: "moderne";
+  src: url("../public/tiempos.otf") format("opentype");
+}
+
+.modernefont {
+  font-family: "moderne";
+}
+
 .noscrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -35,6 +50,10 @@
 }
 
 @layer components {
+  .application_blue {
+    @apply text-blue-600;
+  }
+
   .paddingx {
     @apply px-[0.5rem];
   }
@@ -77,7 +96,7 @@
       @apply px-[6rem];
     }
     .desctext1 {
-      @apply text-[40px];
+      @apply text-5xl font-semibold;
     }
     .paddingdiv {
       @apply py-[3rem];
@@ -86,7 +105,7 @@
       @apply text-[40px];
     }
     .desctext2 {
-      @apply text-[25px];
+      @apply text-2xl font-extralight;
     }
   }
 
@@ -146,4 +165,14 @@
 }
 .projectContainer div p {
   pointer-events: none;
+}
+
+.swiper_container {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.swiper-slide {
+  width: 37rem !important;
+  position: relative;
 }
