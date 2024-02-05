@@ -50,7 +50,7 @@ export default function Home() {
     hasWindow && (
       <div>
         <div className=" bg-image ">
-          <div className="bg-opacity-80  bg-black ">
+          <div className="bg-opacity-90  bg-black ">
             <Header />
             <div
               style={{
@@ -100,7 +100,7 @@ export default function Home() {
           <div className="flex flex-col space-y-8 text-center text-black ">
             <div className=" font-[500]  desctext1 modernefont tracking-wide">
               Step Into the Universe of{"  "}
-              <span className="application_blue font-bold underline underline-offset-4">
+              <span className="application_blue font-bold  ">
                 Strategic Mastery
               </span>{" "}
             </div>
@@ -120,13 +120,9 @@ export default function Home() {
         <div className=" pb-44 ">
           <div className="flex flex-col space-y-8 text-center text-black ">
             <div className="paddingx desctext1 font-[500] modernefont tracking-wide">
-              <span className="application_blue font-bold underline underline-offset-4">
-                Industries
-              </span>{" "}
+              <span className="application_blue font-bold  ">Industries</span>{" "}
               and{" "}
-              <span className="application_blue font-bold underline underline-offset-4">
-                Applications
-              </span>
+              <span className="application_blue font-bold  ">Applications</span>
             </div>
             <div className="paddingx  mx-auto desctext2 ">
               From the ground up in AgriTech to the soaring aspirations of
@@ -144,30 +140,30 @@ export default function Home() {
                   rotate: 0,
                   stretch: 0,
                   depth: 100,
-                  modifier: 2.5,
+                  modifier: 3,
                 }}
                 autoplay={{
-                  delay: 1000,
+                  delay: 2000,
                   disableOnInteraction: true,
                 }}
                 modules={[Autoplay, EffectCoverflow]}
                 className="swiper_container"
               >
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="Aerospace Ascent"
                     imgsrc="/Aerospace.png"
                     des="Empower Aerospace innovation with data-centric market intelligence. Enhance Aerospace Strategy"
                   />
                 </SwiperSlide>
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="AgriTech Innovations"
                     imgsrc="/AgriTech.png"
                     des="Empower AgriTech innovation with data-centric market intelligence. Enhance AgriTech Strategy"
                   />
                 </SwiperSlide>
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="EV"
                     imgsrc="/EV.png"
@@ -175,21 +171,28 @@ export default function Home() {
                   />
                 </SwiperSlide>
 
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="FoodTech"
                     imgsrc="/FoodTech.png"
                     des="Empower FoodTech innovation with data-centric market intelligence. Enhance FoodTech Strategy"
                   />
                 </SwiperSlide>
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="HealthTech"
                     imgsrc="/HealthTech.png"
-                    des="Empower HealthTech innovation with data-centric market intelligence. Enhance FoodTech Strategy"
+                    des="Empower HealthTech innovation with data-centric market intelligence. Enhance HealthTech Strategy"
                   />
                 </SwiperSlide>
-                <SwiperSlide className="border rounded-md">
+                <SwiperSlide className="shadow-2xl rounded-md">
+                  <MainComp
+                    text="Pet"
+                    imgsrc="/Pet.jpg"
+                    des="Empower Pet innovation with data-centric market intelligence. Enhance Pet Strategy"
+                  />
+                </SwiperSlide>
+                <SwiperSlide className="shadow-2xl rounded-md">
                   <MainComp
                     text="Semiconductor Strategies"
                     imgsrc="/Semiconductor.png"
@@ -204,9 +207,7 @@ export default function Home() {
           <div className="flex flex-col space-y-8 text-center text-black ">
             <div className="paddingx desctext1 font-[500] modernefont tracking-wide">
               Market Universe{" "}
-              <span className="application_blue font-bold underline underline-offset-4">
-                Advantage
-              </span>
+              <span className="application_blue font-bold  ">Advantage</span>
             </div>
             <div className="paddingx mx-auto desctext2 ">
               Market Universe isnt just a tool; its your strategic partner,
@@ -240,13 +241,8 @@ export default function Home() {
                 title="Competitive Analysis"
                 desc="Gain a competitive edge with in-depth analysis of market rivals"
               />
-              <div className="flex items-center border border-gray-200 rounded-lg  justify-center desctext1 font-extralight  ">
-                <sapn className="application_blue mx-2 font-semibold">7</sapn>
-                {"  "} Niche Verticals
-                {"  "}
-                <sapn className="application_blue mx-2 font-semibold">
-                  100+ Markets
-                </sapn>
+              <div className="flex items-center border border-gray-200 rounded-lg  justify-center desctext1 font-extralight application_blue font-semibold ">
+                7 Niche Verticals 100+ Markets
               </div>
             </div>
           </div>
@@ -256,9 +252,7 @@ export default function Home() {
           <div className="flex flex-col space-y-8 text-center text-black ">
             <div className="desctext1 font-[500]  modernefont tracking-wide">
               Your Market Strategy{" "}
-              <span className="application_blue font-bold underline underline-offset-4">
-                Transformed
-              </span>
+              <span className="application_blue font-bold  ">Transformed</span>
             </div>
             <div className="mx-auto w-[90%]  desctext2">
               Embrace the comprehensive, data-driven decision-making that Market
@@ -268,7 +262,11 @@ export default function Home() {
             </div>
             <div className="flex flex-col space-y-4">
               <div className="w-[80%] mx-auto desctext2 font-extralight ">
-                Join the elite circle of Market Universe strategists
+                Join the elite circle of{" "}
+                <span className="application_blue font-extrabold">
+                  Market Universe
+                </span>{" "}
+                strategists
               </div>
 
               <Link

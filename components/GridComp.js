@@ -11,7 +11,9 @@ const GridComp = ({ title, desc, imgsrc }) => {
       />
 
       <div className="h-3/5 justify-evenly  items-start px-4 flex flex-col space-y-2">
-        <h5 className=" text-2xl font-bold tracking-tight ">{title}</h5>
+        <h5 className=" text-2xl font-bold tracking-tight text-left">
+          {title}
+        </h5>
 
         <p className=" font-normal text-gray-400 text-left">{desc}</p>
       </div>
