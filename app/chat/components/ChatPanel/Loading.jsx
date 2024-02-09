@@ -31,7 +31,7 @@ const Loading = ({ loading = true }) => {
 
     const updateRandomNumber = async () => {
       try {
-        let number = Math.floor(Math.random() * 20);
+        let number = Math.floor(Math.random() * Thoughts.length);
         await setRandomNumber(number);
       } catch (error) {
         console.error("Error updating random number:", error);
